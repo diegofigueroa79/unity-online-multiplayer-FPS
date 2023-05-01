@@ -1,0 +1,4 @@
+.player-text {
+    font-size: 40px;
+    -unity-text-align: upper-center;
+}

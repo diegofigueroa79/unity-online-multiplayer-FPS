@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Game/Loading/loading.uss?fileID=7433441132597879392&amp;guid=c4264c223cc094849a65aed40879aa8d&amp;type=3#loading" />
+    <Style src="project://database/Assets/Game/Room/room.uss?fileID=7433441132597879392&amp;guid=5d4ca209221fa854a8fce61f8037a0a6&amp;type=3#room" />
+    <ui:VisualElement name="RoomContainer" class="base-background" style="justify-content: flex-start;">
+        <ui:VisualElement name="HeaderContainer" style="flex-direction: row; justify-content: space-between; width: 854px; flex-grow: 0;">
+            <ui:Label text="RoomName" display-tooltip-when-elided="true" name="RoomNameLabel" class="base-text player-text" />
+            <ui:Button text="Start Game" display-tooltip-when-elided="true" name="StartButton" style="width: 104px; background-color: rgba(255, 219, 0, 255); display: flex; visibility: visible;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="PlayerListContainer" style="height: 300px; width: 291px;">
+            <ui:Label text="&lt;empty&gt;" display-tooltip-when-elided="true" class="base-text player-text" style="-unity-text-align: upper-center; font-size: 30px;" />
+            <ui:Label text="&lt;empty&gt;" display-tooltip-when-elided="true" class="base-text player-text" style="font-size: 30px;" />
+            <ui:Label text="&lt;empty&gt;" display-tooltip-when-elided="true" class="base-text player-text" style="font-size: 30px;" />
+            <ui:Label text="&lt;empty&gt;" display-tooltip-when-elided="true" class="base-text player-text" style="font-size: 30px;" />
+            <ui:Label text="&lt;empty&gt;" display-tooltip-when-elided="true" class="base-text player-text" style="font-size: 30px;" />
+            <ui:Label text="&lt;empty&gt;" display-tooltip-when-elided="true" class="base-text player-text" style="font-size: 30px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
