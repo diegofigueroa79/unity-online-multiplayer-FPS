@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Game/Loading/loading.uss?fileID=7433441132597879392&amp;guid=c4264c223cc094849a65aed40879aa8d&amp;type=3#loading" />
+    <Style src="project://database/Assets/Game/Lobby/lobby.uss?fileID=7433441132597879392&amp;guid=7ed4a6a053a61d646ad3e1b85a4b16fe&amp;type=3#lobby" />
+    <ui:VisualElement name="LobbyContainer" class="base-background">
+        <ui:VisualElement name="InteractiveContainer" style="height: 359px; width: 420px; align-items: center; justify-content: space-around;">
+            <ui:Label text="Main Lobby" display-tooltip-when-elided="true" class="base-text" style="font-size: 50px;" />
+            <ui:VisualElement name="UsernameContainer" class="input-size" style="flex-direction: row;">
+                <ui:Label text="Username" display-tooltip-when-elided="true" class="base-text" style="-unity-text-align: middle-left; font-size: 20px;" />
+                <ui:TextField picking-mode="Ignore" class="input-field-size" />
+            </ui:VisualElement>
+            <ui:VisualElement name="CreateContainer" class="input-size" style="flex-direction: row;">
+                <ui:Button text="Create" display-tooltip-when-elided="true" class="button base-text" />
+                <ui:TextField picking-mode="Ignore" class="input-field-size" />
+            </ui:VisualElement>
+            <ui:VisualElement name="JoinContainer" class="input-size" style="flex-direction: row;">
+                <ui:Button text="Join" display-tooltip-when-elided="true" class="button base-text" />
+                <ui:TextField picking-mode="Ignore" class="input-field-size" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

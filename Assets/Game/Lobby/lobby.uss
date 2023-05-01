@@ -1,0 +1,14 @@
+.button {
+    width: 102px;
+    background-color: rgba(255, 219, 0, 255);
+}
+
+.input-size {
+    height: 50px;
+    width: 366px;
+    justify-content: space-around;
+}
+
+.input-field-size {
+    width: 177px;
+}

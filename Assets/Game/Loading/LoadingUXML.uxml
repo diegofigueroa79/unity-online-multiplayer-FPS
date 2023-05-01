@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Game/Loading/loading.uss?fileID=7433441132597879392&amp;guid=c4264c223cc094849a65aed40879aa8d&amp;type=3#loading" />
-    <ui:VisualElement name="LoadingContainer" class="base-background" style="flex-grow: 1; background-color: rgb(255, 159, 0); align-items: center; justify-content: center;">
+    <ui:VisualElement name="LoadingContainer" class="base-background">
         <ui:Label text="Loading..." display-tooltip-when-elided="true" class="base-text" style="font-size: 80px;" />
     </ui:VisualElement>
 </ui:UXML>
