@@ -1,0 +1,7 @@
+.base-background {
+}
+
+.base-text {
+    -unity-font: none;
+    color: rgb(6, 108, 255);
+}
