@@ -6,15 +6,15 @@
             <ui:Label text="Main Lobby" display-tooltip-when-elided="true" class="base-text" style="font-size: 50px;" />
             <ui:VisualElement name="UsernameContainer" class="input-size" style="flex-direction: row;">
                 <ui:Label text="Username" display-tooltip-when-elided="true" class="base-text" style="-unity-text-align: middle-left; font-size: 20px;" />
-                <ui:TextField picking-mode="Ignore" class="input-field-size" />
+                <ui:TextField picking-mode="Ignore" name="UsernameTextField" class="input-field-size" />
             </ui:VisualElement>
             <ui:VisualElement name="CreateContainer" class="input-size" style="flex-direction: row;">
-                <ui:Button text="Create" display-tooltip-when-elided="true" class="button base-text" />
-                <ui:TextField picking-mode="Ignore" class="input-field-size" />
+                <ui:Button text="Create" display-tooltip-when-elided="true" name="CreateButton" class="button base-text" />
+                <ui:TextField picking-mode="Ignore" name="CreateTextField" class="input-field-size" />
             </ui:VisualElement>
             <ui:VisualElement name="JoinContainer" class="input-size" style="flex-direction: row;">
-                <ui:Button text="Join" display-tooltip-when-elided="true" class="button base-text" />
-                <ui:TextField picking-mode="Ignore" class="input-field-size" />
+                <ui:Button text="Join" display-tooltip-when-elided="true" name="JoinButton" class="button base-text" />
+                <ui:TextField picking-mode="Ignore" name="JoinTextField" class="input-field-size" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
