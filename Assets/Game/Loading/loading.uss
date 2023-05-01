@@ -1,7 +1,11 @@
-.base-background {
-}
-
 .base-text {
     -unity-font: none;
     color: rgb(6, 108, 255);
+}
+
+.base-background {
+    flex-grow: 1;
+    background-color: rgb(255, 159, 0);
+    align-items: center;
+    justify-content: center;
 }
