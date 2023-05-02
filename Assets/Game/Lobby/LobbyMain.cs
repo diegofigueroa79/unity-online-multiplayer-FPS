@@ -28,16 +28,17 @@ public class LobbyMain : MonoBehaviourPunCallbacks
     }
 
     private void CreateRoom() {
+        PhotonNetwork.NickName = usernameInput.text;
         PhotonNetwork.CreateRoom(roomName: createInput.text);
     }
 
     private void JoinRoom() {
+        PhotonNetwork.NickName = usernameInput.text;
         PhotonNetwork.JoinRoom(roomName: joinInput.text);
     }
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.NickName = usernameInput.text;
         PhotonNetwork.LoadLevel("Room");
     }
 }
