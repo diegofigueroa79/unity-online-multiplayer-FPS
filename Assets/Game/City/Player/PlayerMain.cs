@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class PlayerMain : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private PlayerMovement playerMovement;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnEnable() {
+        // when player is instantiated, enable playermovement script
+        playerMovement = GetComponent<PlayerMovement>();
+        playerMovement.enabled = true;       
     }
 }

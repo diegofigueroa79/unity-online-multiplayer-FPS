@@ -10,6 +10,7 @@ public class GameMain : MonoBehaviour
     [SerializeField]
     private Transform initialSpawnPoints;
     private Transform spawnPoint;
+    [SerializeField]
     private GameObject _player;
 
     private void Awake() {
