@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class GameMain : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private int player_id;
+    [SerializeField]
+    private Transform initialSpawnPoints;
+    private Transform spawnPoint;
+    private GameObject _player;
+
+    private void Awake() {
+
+        // SPAWN LOCAL PLAYER
+        ////////////////////////////////////////////
+        // get transform of spawn point by player id
+        player_id = PhotonNetwork.LocalPlayer.ActorNumber;
+        spawnPoint = initialSpawnPoints.GetChild(player_id);
+        // instantiate player in a preassigned spawn point
+        _player = PhotonNetwork.Instantiate("player", spawnPoint.position, Quaternion.identity);
+        ////////////////////////////////////////////
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
