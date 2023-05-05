@@ -6,18 +6,24 @@ using Photon.Pun;
 public class PlayerMovement : MonoBehaviour
 {
     private PhotonView view;
-    public float speed = 3.0f;
+    [SerializeField]
+    private Camera cam;
+    [SerializeField]
+    private float speed = 3.0f;
+    [SerializeField]
+    private float sensitivity = 5.0f;
+
 
     private void OnEnable() {
         view = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if ( view.IsMine ) {
 
-            // PLAYER MOVEMENT AND ROTATION
+            // PLAYER MOVEMENT WITH KEYBOARD
             ////////////////////////////////////////////
             float x = Input.GetAxisRaw("Horizontal");
             float z = Input.GetAxisRaw("Vertical");
@@ -30,6 +36,11 @@ public class PlayerMovement : MonoBehaviour
 
             transform.position += input * velocity;
             
+            // PLAYER ROTATION WITH MOUSE
+            ////////////////////////////////////////////
+            //float mouse_x = sensitivity * Input.GetAxis("Mouse X");
+            //float mouse_y = sensitivity * Input.GetAxis("Mouse Y");
+
         }
     }
 }
