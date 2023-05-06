@@ -7,11 +7,13 @@ public class PlayerMovement : MonoBehaviour
 {
     private PhotonView view;
     [SerializeField]
+    private Animator animatorController;
+    [SerializeField]
     private Camera cam;
     [SerializeField]
     private float speed = 3.0f;
     [SerializeField]
-    private float sensitivity = 50.0f;
+    private float sensitivity = 1000.0f;
     private float xRotation;
     private float x;
     private float y;
@@ -32,21 +34,25 @@ public class PlayerMovement : MonoBehaviour
 
             // PLAYER MOVEMENT WITH KEYBOARD
             ////////////////////////////////////////////
-            x = Input.GetAxisRaw("Horizontal");
-            z = Input.GetAxisRaw("Vertical");
-            y = 0.0f;
+            x = Input.GetAxis("Horizontal");
+            z = Input.GetAxis("Vertical");
+            // SET WALKING ANIMATION
+            if ( x != 0f || z != 0f ) {
+                animatorController.SetBool("IsWalking", true);
+            } else {
+                animatorController.SetBool("IsWalking", false);
+            }
 
-            Vector3 input = new Vector3(x: x, y: y, z: z);
-            input.Normalize();
+            Vector3 move = transform.right * x + transform.forward * z;
 
             velocity = speed * Time.deltaTime;
 
-            transform.position += input * velocity;
+            transform.position += move * velocity;
             
             // PLAYER ROTATION WITH MOUSE
             ////////////////////////////////////////////
-            mouse_x = sensitivity * Input.GetAxisRaw("Mouse X");
-            mouse_y = sensitivity * Input.GetAxisRaw("Mouse Y");
+            mouse_x = sensitivity * Input.GetAxis("Mouse X") * Time.deltaTime;
+            mouse_y = sensitivity * Input.GetAxis("Mouse Y") * Time.deltaTime;
 
             // rotate camera to look up and down
             xRotation -= mouse_y;
