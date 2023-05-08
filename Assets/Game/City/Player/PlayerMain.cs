@@ -13,7 +13,7 @@ public class PlayerMain : MonoBehaviour
         playerMovement.enabled = true;       
     }
 
-    private void TakeDamage(int damage) {
+    public void TakeDamage(int damage) {
         health -= damage;
         // if health drops below zero, call death function
         if ( health <= 0 ) {
