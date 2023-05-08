@@ -6,6 +6,7 @@ public class PlayerMain : MonoBehaviour
 {
     private PlayerMovement playerMovement;
     public int health = 100;
+    public int killCount = 0;
 
     private void OnEnable() {
         // when player is instantiated, enable playermovement script

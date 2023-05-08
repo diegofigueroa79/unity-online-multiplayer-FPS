@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Photon.Pun;
 
 public class PlayerShooting : MonoBehaviour
@@ -11,11 +12,19 @@ public class PlayerShooting : MonoBehaviour
     private GameObject other;
     [SerializeField]
     private Camera cam;
+    [SerializeField]
+    private UIDocument uidocumentMetrics;
+    private VisualElement root;
+    private Label killCountLabel;
+    private PlayerMain playerMain;
 
     // Start is called before the first frame update
     void OnEnable()
     {
         view = GetComponent<PhotonView>();
+        root = uidocumentMetrics.rootVisualElement;
+        killCountLabel = root.Q<Label>();
+        playerMain = GetComponent<PlayerMain>();
     }
 
     // Update is called once per frame
@@ -29,8 +38,11 @@ public class PlayerShooting : MonoBehaviour
                 if ( Physics.Raycast(cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0)), out rayhit ) ) {
                     if ( rayhit.collider != null ) {
                         other = rayhit.collider.gameObject;
-                        if ( TryGetComponent<PlayerMain>(out PlayerMain playerMain ) ){
-                            playerMain.TakeDamage(damage: 10);
+                        if ( TryGetComponent<PlayerMain>(out PlayerMain otherPlayerMain ) ){
+                            otherPlayerMain.TakeDamage(damage: 10);
+                            if ( otherPlayerMain.health <= 0 ) {
+                                killCountLabel.text = $"Kill Count: {playerMain.killCount}";
+                            }
                         }
                     }
                 }
