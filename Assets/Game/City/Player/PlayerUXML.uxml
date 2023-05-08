@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="PlayerContainer" style="flex-grow: 1; align-items: center; justify-content: center;">
+        <ui:Label text="X" display-tooltip-when-elided="true" name="Marker" style="-unity-font-style: bold; font-size: 25px; color: rgba(255, 0, 0, 255);" />
+    </ui:VisualElement>
+</ui:UXML>
