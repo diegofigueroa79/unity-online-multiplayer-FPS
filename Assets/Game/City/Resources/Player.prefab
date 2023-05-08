@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  killCount: 0
 --- !u!114 &5912889107291628917
 MonoBehaviour:
   m_ObjectHideFlags: 0

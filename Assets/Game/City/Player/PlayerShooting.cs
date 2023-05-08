@@ -12,8 +12,8 @@ public class PlayerShooting : MonoBehaviour
     private GameObject other;
     [SerializeField]
     private Camera cam;
-    [SerializeField]
     private UIDocument uidocumentMetrics;
+    private GameObject metricsGameObj;
     private VisualElement root;
     private Label killCountLabel;
     private PlayerMain playerMain;
@@ -22,8 +22,10 @@ public class PlayerShooting : MonoBehaviour
     void OnEnable()
     {
         view = GetComponent<PhotonView>();
+        metricsGameObj = GameObject.Find("UIDocumentMetrics");
+        uidocumentMetrics = metricsGameObj.GetComponent<UIDocument>();
         root = uidocumentMetrics.rootVisualElement;
-        killCountLabel = root.Q<Label>();
+        killCountLabel = root.Q<Label>("KillCountLabel");
         playerMain = GetComponent<PlayerMain>();
     }
 

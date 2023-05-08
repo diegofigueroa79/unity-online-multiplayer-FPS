@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UIElements;
 
 public class GameMain : MonoBehaviour
 {
@@ -23,8 +24,5 @@ public class GameMain : MonoBehaviour
         // instantiate player in a preassigned spawn point
         _player = PhotonNetwork.Instantiate("player", spawnPoint.position, Quaternion.identity);
         ////////////////////////////////////////////
-
     }
-
-    
 }
