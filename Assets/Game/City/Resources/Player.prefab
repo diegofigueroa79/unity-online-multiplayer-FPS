@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3326e64ee37524188e0f6a5dd7c22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnPoints: {fileID: 0}
   health: 100
   killCount: 0
 --- !u!114 &5912889107291628917
@@ -231,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animatorController: {fileID: 2199072389252429914}
   cam: {fileID: 1607599779673557744}
-  speed: 3
+  speed: 6
   sensitivity: 1000
 --- !u!114 &2179353601589134251
 MonoBehaviour:
