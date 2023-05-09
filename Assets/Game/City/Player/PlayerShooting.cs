@@ -19,6 +19,8 @@ public class PlayerShooting : MonoBehaviour
     private PlayerMain playerMain;
     [SerializeField]
     private ParticleSystem muzzleFlash;
+    [SerializeField]
+    private LayerMask playerLayer;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -41,7 +43,7 @@ public class PlayerShooting : MonoBehaviour
             if ( shootInput ) {
                 muzzleFlash.Play();
 
-                if ( Physics.Raycast(cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0)), out rayhit ) ) {
+                if ( Physics.Raycast(cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0)), out rayhit, Mathf.Infinity, playerLayer ) ) {
                     if ( rayhit.collider != null ) {
                         other = rayhit.collider.gameObject;
                         if ( TryGetComponent<PlayerMain>(out PlayerMain otherPlayerMain ) ){

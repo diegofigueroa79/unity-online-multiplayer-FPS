@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 2179353601589134251}
   - component: {fileID: 5089909413669585474}
   - component: {fileID: 8715677723007247380}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,6 +247,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1607599779673557744}
   muzzleFlash: {fileID: 170493937277840266}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &5089909413669585474
 MonoBehaviour:
   m_ObjectHideFlags: 0
