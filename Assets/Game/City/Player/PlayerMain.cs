@@ -87,7 +87,7 @@ public class PlayerMain : MonoBehaviour
     private string CalculateTime(int seconds) {
         int mins = seconds / 60;
         int sec = seconds % 60;
-        string str_seconds = (seconds < 10 ) ? $"0{sec}" : $"{sec}";
+        string str_seconds = (sec < 10 ) ? $"0{sec}" : $"{sec}";
         return $"Timer: 0{mins}:{str_seconds}";
     }
 
