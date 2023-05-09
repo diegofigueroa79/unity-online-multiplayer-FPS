@@ -7,6 +7,10 @@ using Photon.Pun;
 public class PlayerMain : MonoBehaviour
 {
     private PlayerMovement playerMovement;
+    private PlayerShooting playerShooting;
+    [SerializeField]
+    private Transform respawnPoints;
+    private Transform respawnPoint;
     public int health = 100;
     public int killCount = 0;
 
@@ -22,6 +26,7 @@ public class PlayerMain : MonoBehaviour
         // when player is instantiated, enable playermovement script
         playerMovement = GetComponent<PlayerMovement>();
         playerMovement.enabled = true;
+        playerShooting = GetComponent<PlayerShooting>();
 
         // start timer coroutine
         view = GetComponent<PhotonView>();
@@ -51,11 +56,23 @@ public class PlayerMain : MonoBehaviour
     }
 
     private void PlayerDeath() {
-        // disable movement
+        // disable movement and shooting
         playerMovement.enabled = false;
-        // disable collider
-        // start coroutine for fadein fadeout black screen?
+        playerShooting.enabled = false;
+        
+    }
+
+    private void PlayerRespawn() {
         // respawn to new spawn point
+        int randID = Random.Range(0, respawnPoints.childCount);
+        respawnPoint = respawnPoints.GetChild(randID);
+        transform.position = respawnPoint.transform.position;
+        // reset metrics
+        health = 100;
+        healthBar.value = health;
+        // enable movement and shooting
+        playerMovement.enabled = true;
+        playerShooting.enabled = true;
     }
 
     public IEnumerator TimerCoroutine(int seconds) {
