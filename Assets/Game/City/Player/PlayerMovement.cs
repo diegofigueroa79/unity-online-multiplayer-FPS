@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private PhotonView view;
     [SerializeField]
+    private AudioSource feetAudioSource;
+    [SerializeField]
     private Animator animatorController;
     [SerializeField]
     private Camera cam;
@@ -38,8 +40,12 @@ public class PlayerMovement : MonoBehaviour
             z = Input.GetAxis("Vertical");
             // SET WALKING ANIMATION
             if ( x != 0f || z != 0f ) {
+                if ( !feetAudioSource.isPlaying ) {
+                    feetAudioSource.Play();
+                }
                 animatorController.SetBool("IsWalking", true);
             } else {
+                feetAudioSource.Stop();
                 animatorController.SetBool("IsWalking", false);
             }
 

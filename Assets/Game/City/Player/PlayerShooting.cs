@@ -21,11 +21,15 @@ public class PlayerShooting : MonoBehaviour
     private ParticleSystem muzzleFlash;
     [SerializeField]
     private LayerMask playerLayer;
+    private AudioSource playerAudioSource;
+    [SerializeField]
+    private AudioClip gunshotClip;
 
     // Start is called before the first frame update
     void OnEnable()
     {
         view = GetComponent<PhotonView>();
+        playerAudioSource = GetComponent<AudioSource>();
         metricsGameObj = GameObject.Find("UIDocumentMetrics");
         uidocumentMetrics = metricsGameObj.GetComponent<UIDocument>();
         root = uidocumentMetrics.rootVisualElement;
@@ -42,6 +46,7 @@ public class PlayerShooting : MonoBehaviour
             
             if ( shootInput ) {
                 muzzleFlash.Play();
+                playerAudioSource.PlayOneShot(gunshotClip, 0.2f);
 
                 if ( Physics.Raycast(cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0)), out rayhit, Mathf.Infinity, playerLayer ) ) {
                     if ( rayhit.collider != null ) {
