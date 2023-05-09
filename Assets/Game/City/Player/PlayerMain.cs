@@ -15,6 +15,7 @@ public class PlayerMain : MonoBehaviour
     private GameObject metricsGameObj;
     private VisualElement root;
     private Label timerLabel;
+    private ProgressBar healthBar;
     private int timeCount = 5 * 60; // five minutes
 
     private void OnEnable() {
@@ -29,6 +30,11 @@ public class PlayerMain : MonoBehaviour
         root = uidocumentMetrics.rootVisualElement;
         timerLabel = root.Q<Label>("TimerLabel");
         timerLabel.text = "Timer: 05:00";
+        // grab health progress bar
+        healthBar = root.Q<ProgressBar>("HealthBar");
+        healthBar.value = health;
+        var actualBar = root.Q(className: "unity-progress-bar__progress");
+        actualBar.style.backgroundColor = Color.green;
         // only the master client will start the timer
         if ( PhotonNetwork.LocalPlayer.IsMasterClient ) {
             StartCoroutine(TimerCoroutine(timeCount));
@@ -37,6 +43,7 @@ public class PlayerMain : MonoBehaviour
 
     public void TakeDamage(int damage) {
         health -= damage;
+        healthBar.value = health;
         // if health drops below zero, call death function
         if ( health <= 0 ) {
             PlayerDeath();
