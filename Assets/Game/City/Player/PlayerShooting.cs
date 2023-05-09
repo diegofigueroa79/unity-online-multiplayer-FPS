@@ -17,6 +17,8 @@ public class PlayerShooting : MonoBehaviour
     private VisualElement root;
     private Label killCountLabel;
     private PlayerMain playerMain;
+    [SerializeField]
+    private ParticleSystem muzzleFlash;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -37,6 +39,8 @@ public class PlayerShooting : MonoBehaviour
             shootInput = Input.GetMouseButtonDown(0);
             
             if ( shootInput ) {
+                muzzleFlash.Play();
+
                 if ( Physics.Raycast(cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0)), out rayhit ) ) {
                     if ( rayhit.collider != null ) {
                         other = rayhit.collider.gameObject;
