@@ -8,7 +8,6 @@ public class PlayerMain : MonoBehaviour
 {
     private PlayerMovement playerMovement;
     private PlayerShooting playerShooting;
-    [SerializeField]
     private Transform respawnPoints;
     private Transform respawnPoint;
     public int health = 100;
@@ -27,6 +26,8 @@ public class PlayerMain : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerMovement.enabled = true;
         playerShooting = GetComponent<PlayerShooting>();
+
+        respawnPoints = GameObject.Find("RespawnPoints").transform;
 
         // start timer coroutine
         view = GetComponent<PhotonView>();
