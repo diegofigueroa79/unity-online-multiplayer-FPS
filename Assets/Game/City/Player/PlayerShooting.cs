@@ -54,7 +54,7 @@ public class PlayerShooting : MonoBehaviour
                         other = rayhit.collider.gameObject;
                         if ( other.TryGetComponent<PhotonView>(out PhotonView otherView ) ) {
                             int photonID = otherView.Owner.ActorNumber;
-                            view.RPC("CallTakeDamage", RpcTarget.Others, 10, photonID);
+                            view.RPC("CallTakeDamage", RpcTarget.Others, 10, photonID, otherView.ViewID);
                         }
                     }
                 }
@@ -64,8 +64,8 @@ public class PlayerShooting : MonoBehaviour
     }
 
     [PunRPC]
-    void CallTakeDamage(int damage, int photonID) {
-        playerMain.TakeDamage(damage, photonID);
+    void CallTakeDamage(int damage, int photonID, int photonViewID) {
+        playerMain.TakeDamage(damage, photonID, photonViewID);
     }
 
     [PunRPC]

@@ -58,13 +58,15 @@ public class PlayerMain : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage, int photonID) {
+    public void TakeDamage(int damage, int photonID, int photonViewID) {
         if ( PhotonNetwork.LocalPlayer.ActorNumber == photonID ) {
-            health -= damage;
-            healthBar.value = health;
+            PhotonView receiverView = PhotonView.Find(photonViewID);
+            PlayerMain receiverPlayerMain = receiverView.gameObject.GetComponent<PlayerMain>();
+            receiverPlayerMain.health -= damage;
+            receiverPlayerMain.healthBar.value = receiverPlayerMain.health;
             // if health drops below zero, call death function
-            if ( health <= 0 ) {
-                PlayerDeath();
+            if ( receiverPlayerMain.health <= 0 ) {
+                receiverPlayerMain.PlayerDeath();
             }
         }
     }
