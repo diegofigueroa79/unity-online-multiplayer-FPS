@@ -58,12 +58,14 @@ public class PlayerMain : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage) {
-        health -= damage;
-        healthBar.value = health;
-        // if health drops below zero, call death function
-        if ( health <= 0 ) {
-            PlayerDeath();
+    public void TakeDamage(int damage, int photonID) {
+        if ( PhotonNetwork.LocalPlayer.ActorNumber == photonID ) {
+            health -= damage;
+            healthBar.value = health;
+            // if health drops below zero, call death function
+            if ( health <= 0 ) {
+                PlayerDeath();
+            }
         }
     }
 
@@ -71,7 +73,7 @@ public class PlayerMain : MonoBehaviour
         // disable movement and shooting
         playerMovement.enabled = false;
         playerShooting.enabled = false;
-        
+        PlayerRespawn();
     }
 
     private void PlayerRespawn() {

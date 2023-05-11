@@ -51,16 +51,19 @@ public class PlayerShooting : MonoBehaviour
                 if ( Physics.Raycast(cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0)), out rayhit, Mathf.Infinity, playerLayer ) ) {
                     if ( rayhit.collider != null ) {
                         other = rayhit.collider.gameObject;
-                        if ( TryGetComponent<PlayerMain>(out PlayerMain otherPlayerMain ) ){
-                            otherPlayerMain.TakeDamage(damage: 10);
-                            if ( otherPlayerMain.health <= 0 ) {
-                                killCountLabel.text = $"Kill Count: {playerMain.killCount}";
-                            }
+                        if ( other.TryGetComponent<PhotonView>(out PhotonView otherView ) ) {
+                            int photonID = otherView.Owner.ActorNumber;
+                            view.RPC("CallTakeDamage", RpcTarget.Others, 10, photonID);
                         }
                     }
                 }
             }
 
         }
+    }
+
+    [PunRPC]
+    void CallTakeDamage(int damage, int photonID) {
+        playerMain.TakeDamage(damage, photonID);
     }
 }
