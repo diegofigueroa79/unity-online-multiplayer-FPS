@@ -47,6 +47,7 @@ public class PlayerShooting : MonoBehaviour
             if ( shootInput ) {
                 muzzleFlash.Play();
                 playerAudioSource.PlayOneShot(gunshotClip, 0.2f);
+                view.RPC("PlayMuzzleFlashGunShot", RpcTarget.Others);
 
                 if ( Physics.Raycast(cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0)), out rayhit, Mathf.Infinity, playerLayer ) ) {
                     if ( rayhit.collider != null ) {
@@ -65,5 +66,11 @@ public class PlayerShooting : MonoBehaviour
     [PunRPC]
     void CallTakeDamage(int damage, int photonID) {
         playerMain.TakeDamage(damage, photonID);
+    }
+
+    [PunRPC]
+    void PlayMuzzleFlashGunShot() {
+        muzzleFlash.Play();
+        playerAudioSource.PlayOneShot(gunshotClip);
     }
 }
