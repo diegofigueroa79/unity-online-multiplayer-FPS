@@ -216,7 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3326e64ee37524188e0f6a5dd7c22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnPoints: {fileID: 0}
+  cam: {fileID: 1607599779673557744}
+  audioListener: {fileID: 2378500858305622867}
   health: 100
   killCount: 0
 --- !u!114 &5912889107291628917
@@ -243,7 +244,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549262262246858704}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da0a2961656ccd1458247ed674f41fbf, type: 3}
   m_Name: 
@@ -446,7 +447,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2796147716364531348}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -489,7 +490,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2796147716364531348}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &3116433030541496749
 GameObject:
   m_ObjectHideFlags: 0

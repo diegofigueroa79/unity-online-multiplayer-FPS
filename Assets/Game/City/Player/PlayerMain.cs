@@ -8,6 +8,10 @@ public class PlayerMain : MonoBehaviour
 {
     private PlayerMovement playerMovement;
     private PlayerShooting playerShooting;
+    [SerializeField]
+    private Camera cam;
+    [SerializeField]
+    private AudioListener audioListener;
     private Transform respawnPoints;
     private Transform respawnPoint;
     public int health = 100;
@@ -22,15 +26,22 @@ public class PlayerMain : MonoBehaviour
     private int timeCount = 5 * 60; // five minutes
 
     private void OnEnable() {
+        view = GetComponent<PhotonView>();
+
         // when player is instantiated, enable playermovement script
         playerMovement = GetComponent<PlayerMovement>();
         playerMovement.enabled = true;
         playerShooting = GetComponent<PlayerShooting>();
+        playerShooting.enabled = true;
+
+        if ( view.IsMine ) {
+            cam.enabled = true;
+            audioListener.enabled = true;
+        }
 
         respawnPoints = GameObject.Find("RespawnPoints").transform;
 
         // start timer coroutine
-        view = GetComponent<PhotonView>();
         metricsGameObj = GameObject.Find("UIDocumentMetrics");
         uidocumentMetrics = metricsGameObj.GetComponent<UIDocument>();
         root = uidocumentMetrics.rootVisualElement;
@@ -44,7 +55,7 @@ public class PlayerMain : MonoBehaviour
         // only the master client will start the timer
         if ( PhotonNetwork.LocalPlayer.IsMasterClient ) {
             StartCoroutine(TimerCoroutine(timeCount));
-        }     
+        }
     }
 
     public void TakeDamage(int damage) {
