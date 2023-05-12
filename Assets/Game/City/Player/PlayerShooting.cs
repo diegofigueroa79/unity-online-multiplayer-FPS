@@ -24,6 +24,8 @@ public class PlayerShooting : MonoBehaviour
     private AudioSource playerAudioSource;
     [SerializeField]
     private AudioClip gunshotClip;
+    [SerializeField]
+    private int damage = 5;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -54,7 +56,7 @@ public class PlayerShooting : MonoBehaviour
                         other = rayhit.collider.gameObject;
                         if ( other.TryGetComponent<PhotonView>(out PhotonView otherView ) ) {
                             int photonID = otherView.Owner.ActorNumber;
-                            view.RPC("CallTakeDamage", RpcTarget.Others, 10, photonID, otherView.ViewID);
+                            view.RPC("CallTakeDamage", RpcTarget.Others, damage, photonID, otherView.ViewID);
                         }
                     }
                 }
