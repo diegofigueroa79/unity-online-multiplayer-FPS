@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Photon.Pun;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PlayerMain : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class PlayerMain : MonoBehaviour
     private GameObject metricsGameObj;
     private VisualElement root;
     private Label timerLabel;
+    private Label killCountLabel;
     private ProgressBar healthBar;
     private int timeCount = 5 * 60; // five minutes
 
@@ -47,6 +49,7 @@ public class PlayerMain : MonoBehaviour
         root = uidocumentMetrics.rootVisualElement;
         timerLabel = root.Q<Label>("TimerLabel");
         timerLabel.text = "Timer: 05:00";
+        killCountLabel = root.Q<Label>("KillCountLabel");
         // grab health progress bar
         healthBar = root.Q<ProgressBar>("HealthBar");
         healthBar.value = health;
@@ -58,7 +61,7 @@ public class PlayerMain : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage, int photonID, int photonViewID) {
+    public void TakeDamage(int damage, int photonID, int photonViewID, int attackerActorNum) {
         if ( PhotonNetwork.LocalPlayer.ActorNumber == photonID ) {
             PhotonView receiverView = PhotonView.Find(photonViewID);
             PlayerMain receiverPlayerMain = receiverView.gameObject.GetComponent<PlayerMain>();
@@ -67,6 +70,7 @@ public class PlayerMain : MonoBehaviour
             // if health drops below zero, call death function
             if ( receiverPlayerMain.health <= 0 ) {
                 receiverPlayerMain.PlayerDeath();
+                receiverView.RPC("UpdateKillCount", RpcTarget.Others, attackerActorNum);
             }
         }
     }
@@ -110,5 +114,16 @@ public class PlayerMain : MonoBehaviour
     [PunRPC]
     void UpdateTime(int seconds) {
         timerLabel.text = CalculateTime(seconds);
+    }
+
+    [PunRPC]
+    void UpdateKillCount(int actorNum) {
+        if ( PhotonNetwork.LocalPlayer.ActorNumber == actorNum ) {
+            ++killCount;
+            killCountLabel.text = $"Kill Count: {killCount}";
+            Hashtable hash = new Hashtable();
+            hash.Add("kills", killCount);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+        }
     }
 }

@@ -255,6 +255,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   gunshotClip: {fileID: 8300000, guid: 19c5115f90313d346b6aed01be72a9da, type: 3}
+  damage: 5
 --- !u!114 &5089909413669585474
 MonoBehaviour:
   m_ObjectHideFlags: 0
