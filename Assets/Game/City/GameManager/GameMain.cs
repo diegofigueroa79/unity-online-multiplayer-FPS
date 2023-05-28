@@ -13,6 +13,8 @@ public class GameMain : MonoBehaviour
     private Transform spawnPoint;
     [SerializeField]
     private GameObject _player;
+    [SerializeField]
+    private EndGame endGame;
 
     private void Awake() {
 
@@ -24,5 +26,10 @@ public class GameMain : MonoBehaviour
         // instantiate player in a preassigned spawn point
         _player = PhotonNetwork.Instantiate("player", spawnPoint.position, Quaternion.identity);
         ////////////////////////////////////////////
+    }
+
+    public void EndGame() {
+        endGame.EnableEndGameUI();
+        endGame.UpdateScoreBoard();
     }
 }

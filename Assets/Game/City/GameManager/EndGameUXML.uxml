@@ -1,14 +1,36 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd">
     <ui:VisualElement name="root" style="flex-grow: 1; justify-content: center; align-items: center;">
-        <ui:VisualElement name="ScoreBoardContainer" style="background-color: rgba(250, 163, 8, 255); height: 435px; width: 531px; justify-content: flex-start; align-items: center; font-size: 30px; -unity-font-style: bold;">
+        <ui:VisualElement name="ScoreBoardContainer" style="background-color: rgb(250, 163, 8); height: 435px; width: 531px; justify-content: flex-start; align-items: center; font-size: 30px; -unity-font-style: bold;">
             <ui:Label text="ScoreBoard" display-tooltip-when-elided="true" name="TitleLabel" style="justify-content: flex-start;" />
             <ui:VisualElement name="PlayersContainer" style="height: 256px; width: 491px; -unity-text-align: upper-center;">
-                <ui:Label text="Player, kills: num, deaths: num" display-tooltip-when-elided="true" style="font-size: 20px;" />
-                <ui:Label text="Player, kills: num, deaths: num" display-tooltip-when-elided="true" style="font-size: 20px;" />
-                <ui:Label text="Player, kills: num, deaths: num" display-tooltip-when-elided="true" style="font-size: 20px;" />
-                <ui:Label text="Player, kills: num, deaths: num" display-tooltip-when-elided="true" style="font-size: 20px;" />
-                <ui:Label text="Player, kills: num, deaths: num" display-tooltip-when-elided="true" style="font-size: 20px;" />
-                <ui:Label text="Player, kills: num, deaths: num" display-tooltip-when-elided="true" style="font-size: 20px;" />
+                <ui:VisualElement name="PlayerContainer" style="flex-direction: row; font-size: 20px; justify-content: space-around;">
+                    <ui:Label text="Player" display-tooltip-when-elided="true" />
+                    <ui:Label text="Kills" display-tooltip-when-elided="true" />
+                </ui:VisualElement>
+                <ui:VisualElement name="PlayerContainer" style="flex-direction: row; font-size: 20px; justify-content: space-around;">
+                    <ui:Label text="Player" display-tooltip-when-elided="true" />
+                    <ui:Label text="Kills" display-tooltip-when-elided="true" />
+                </ui:VisualElement>
+                <ui:VisualElement name="PlayerContainer" style="flex-direction: row; font-size: 20px; justify-content: space-around;">
+                    <ui:Label text="Player" display-tooltip-when-elided="true" />
+                    <ui:Label text="Kills" display-tooltip-when-elided="true" />
+                </ui:VisualElement>
+                <ui:VisualElement name="PlayerContainer" style="flex-direction: row; font-size: 20px; justify-content: space-around;">
+                    <ui:Label text="Player" display-tooltip-when-elided="true" />
+                    <ui:Label text="Kills" display-tooltip-when-elided="true" />
+                </ui:VisualElement>
+                <ui:VisualElement name="PlayerContainer" style="flex-direction: row; font-size: 20px; justify-content: space-around;">
+                    <ui:Label text="Player" display-tooltip-when-elided="true" />
+                    <ui:Label text="Kills" display-tooltip-when-elided="true" />
+                </ui:VisualElement>
+                <ui:VisualElement name="PlayerContainer" style="flex-direction: row; font-size: 20px; justify-content: space-around;">
+                    <ui:Label text="Player" display-tooltip-when-elided="true" />
+                    <ui:Label text="Kills" display-tooltip-when-elided="true" />
+                </ui:VisualElement>
+                <ui:VisualElement name="PlayerContainer" style="flex-direction: row; font-size: 20px; justify-content: space-around;">
+                    <ui:Label text="Player" display-tooltip-when-elided="true" />
+                    <ui:Label text="Kills" display-tooltip-when-elided="true" />
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="OptionsContainer" style="height: 70px; width: 383px; flex-direction: row; justify-content: space-around;">
                 <ui:Button text="Play Again" display-tooltip-when-elided="true" name="PlayAgainBtn" />

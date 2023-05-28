@@ -27,7 +27,10 @@ public class PlayerMain : MonoBehaviour
     private ProgressBar healthBar;
     private int timeCount = 5 * 60; // five minutes
 
+    private GameMain gameMain;
+
     private void OnEnable() {
+        gameMain = GameObject.Find("GameManager").GetComponent<GameMain>();
         view = GetComponent<PhotonView>();
 
         // when player is instantiated, enable playermovement script
@@ -37,6 +40,11 @@ public class PlayerMain : MonoBehaviour
         playerShooting.enabled = true;
 
         if ( view.IsMine ) {
+            // Set localplayer customproperties kills to zero
+            Hashtable hash = new Hashtable();
+            hash.Add("kills", killCount);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+
             cam.enabled = true;
             audioListener.enabled = true;
         }
@@ -102,6 +110,9 @@ public class PlayerMain : MonoBehaviour
             //timerLabel.text = calculatetime(seconds);
             view.RPC("UpdateTime", RpcTarget.All, seconds);
         }
+
+        // game has finished
+        view.RPC("EndGameRPC", RpcTarget.All);
     }
 
     private string CalculateTime(int seconds) {
@@ -124,6 +135,13 @@ public class PlayerMain : MonoBehaviour
             Hashtable hash = new Hashtable();
             hash.Add("kills", killCount);
             PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+        }
+    }
+
+    [PunRPC]
+    void EndGameRPC() {
+        if ( view.IsMine ) {
+            gameMain.EndGame();
         }
     }
 }
